@@ -14,6 +14,6 @@ RUN unzip -o /tmp/app.zip -d /app \
     && rm -f /tmp/app.zip \
     && chmod +x /app/run.sh
 
-EXPOSE 3000
+EXPOSE 443
 
 CMD ["/bin/bash", "/app/run.sh"]
