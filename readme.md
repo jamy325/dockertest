@@ -45,3 +45,52 @@ docker run --rm -p 443:443 -v "./config.json:/etc/v2flyconfig.json:ro" -e "APP_C
     ]
 }
 ```
+
+客户端连接
+```json
+{
+    "log": {
+        "loglevel": "warning"
+    },
+    "inbounds": [
+        {
+            "port": 10800,
+            "listen": "127.0.0.1",
+            "protocol": "socks",
+            "settings": {
+                "udp": true
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "example.com", // 换成你的域名或服务器 IP（发起请求时无需解析域名了）
+                        "port": 443,
+                        "users": [
+                            {
+                                "id": "0affffe4-3f7e-423f-9192-b75a17b7ec64", // 填写你的 UUID
+                                "encryption": "none",
+                                "level": 0
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "tls",
+                "tlsSettings": {
+                    "serverName": "example.com" // 换成你的域名
+                },
+                "wsSettings": {
+                    "path": "/data" // 必须换成自定义的 PATH，需要和服务端的一致
+                }
+            }
+        }
+    ]
+}
+```
