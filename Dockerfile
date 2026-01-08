@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends unzip curl  bash ca-certificates \
+    && apt-get install -y --no-install-recommends unzip curl bash nginx ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /v2ray
@@ -15,7 +15,9 @@ RUN unzip -o /tmp/app.zip -d /app \
     && chmod +x /app/run.sh
 
 COPY config.json /app/config.json
+COPY index.html /app/html/index.html
+COPY nginx.conf /etc/nginx/nginx.conf
 
-EXPOSE 443
+EXPOSE 80
 
 CMD ["/bin/bash", "/app/run.sh"]
