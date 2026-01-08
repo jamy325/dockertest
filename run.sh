@@ -8,6 +8,9 @@ echo nginx conf
 echo .
 
 cat /etc/nginx/nginx.conf
-nginx -s reload
+nohup nginx -c /etc/nginx/nginx.conf > /dev/null 2>&1 &
+
+ls -alh /app
+ps -ef 
 
 /app/v2ray run -c $config
