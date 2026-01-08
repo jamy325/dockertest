@@ -1,10 +1,1241 @@
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="从能源、交通、消费、生物多样性等角度倡导保护地球：你的小行动，决定地球的大未来。" />
+  <title>保护地球 · 从今天开始</title>
 
-    <head>
-<title>保护地球</title>
-    </head>
+  <!-- Google Fonts (公共CDN) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
 
-    <body>
-        hello world.
-    </body>
+  <!-- Font Awesome (公共CDN) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    :root{
+      --bg: #071a12;
+      --bg2:#0b2a1d;
+      --card:#0f2f22;
+      --card2:#103527;
+      --text:#eaf7f1;
+      --muted:#b8d6c8;
+      --line: rgba(255,255,255,.12);
+      --accent:#4ade80;
+      --accent2:#22c55e;
+      --warn:#fbbf24;
+      --danger:#fb7185;
+      --shadow: 0 18px 60px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1120px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family:"Noto Sans SC", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background: radial-gradient(1200px 600px at 15% 5%, rgba(34,197,94,.22), transparent 60%),
+                  radial-gradient(900px 500px at 90% 15%, rgba(74,222,128,.16), transparent 55%),
+                  linear-gradient(180deg, var(--bg) 0%, #06130e 40%, #050e0b 100%);
+      overflow-x:hidden;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:0 18px; }
+
+    /* Top Nav */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(6, 19, 14, .55);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      letter-spacing:.6px;
+    }
+    .brand i{
+      color:var(--accent);
+      filter: drop-shadow(0 8px 18px rgba(34,197,94,.25));
+    }
+    .navlinks{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .navlinks a{
+      font-size:14px;
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+      transition:.18s ease;
+    }
+    .navlinks a:hover{
+      color:var(--text);
+      border-color: var(--line);
+      background: rgba(255,255,255,.06);
+    }
+
+    /* Hero */
+    .hero{
+      position:relative;
+      padding:54px 0 26px;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.25fr .9fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    @media (max-width: 920px){
+      .heroGrid{ grid-template-columns:1fr; }
+    }
+    .heroCard{
+      border-radius: var(--radius);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      border:1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(16,53,39,.88), rgba(8,22,16,.92)),
+        url("https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1600&q=70")
+        center/cover no-repeat;
+      position:relative;
+      min-height: 360px;
+      padding:26px;
+    }
+    .heroCard:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient(600px 300px at 30% 20%, rgba(74,222,128,.35), transparent 60%),
+                  radial-gradient(480px 280px at 80% 60%, rgba(34,197,94,.22), transparent 62%);
+      pointer-events:none;
+    }
+    .heroCard > *{ position:relative; }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:7px 12px;
+      border-radius:999px;
+      font-size:13px;
+      color: var(--text);
+      background: rgba(0,0,0,.28);
+      border:1px solid rgba(255,255,255,.14);
+      margin-bottom:14px;
+    }
+    .kicker i{ color: var(--accent); }
+
+    h1{
+      margin:0 0 10px;
+      font-size: 40px;
+      line-height:1.12;
+      letter-spacing:.2px;
+    }
+    @media (max-width: 480px){
+      h1{ font-size: 32px; }
+    }
+    .lead{
+      margin:0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 62ch;
+    }
+
+    .ctaRow{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:11px 14px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font-weight:700;
+      cursor:pointer;
+      transition:.18s ease;
+      user-select:none;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.1);
+      border-color: rgba(255,255,255,.22);
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(34,197,94,.95), rgba(74,222,128,.9));
+      color:#052013;
+      border-color: transparent;
+    }
+    .btn.primary:hover{ filter: brightness(1.03); }
+
+    .heroAside{
+      display:grid;
+      grid-template-rows: 1fr 1fr;
+      gap:14px;
+    }
+    .mini{
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .miniTop{
+      padding:16px 16px 0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .mini h3{
+      margin:0;
+      font-size:16px;
+      letter-spacing:.2px;
+    }
+    .pill{
+      font-size:12px;
+      color: var(--muted);
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+      white-space:nowrap;
+    }
+    .miniBody{
+      padding:12px 16px 16px;
+      color: var(--muted);
+      line-height:1.7;
+      font-size:14px;
+    }
+    .miniImg{
+      height:140px;
+      background:
+        linear-gradient(180deg, rgba(6,19,14,.1), rgba(6,19,14,.85)),
+        url("https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&w=1200&q=70")
+        center/cover no-repeat;
+      border-top:1px solid var(--line);
+    }
+    .miniImg2{
+      height:140px;
+      background:
+        linear-gradient(180deg, rgba(6,19,14,.1), rgba(6,19,14,.85)),
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=70")
+        center/cover no-repeat;
+      border-top:1px solid var(--line);
+    }
+
+    /* Sections */
+    section{ padding: 26px 0; }
+    .sectionTitle{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:14px;
+    }
+    .sectionTitle h2{
+      margin:0;
+      font-size: 22px;
+      letter-spacing:.2px;
+    }
+    .sectionTitle p{
+      margin:0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height:1.6;
+      max-width: 62ch;
+    }
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    @media (max-width: 920px){ .grid3{ grid-template-columns: 1fr; } }
+
+    .card{
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      padding:16px;
+    }
+    .card h3{ margin:0 0 8px; font-size:16px; }
+    .card p{ margin:0; color:var(--muted); line-height:1.7; font-size:14px; }
+
+    .iconHead{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:10px;
+    }
+    .icon{
+      width:38px; height:38px;
+      border-radius: 12px;
+      display:grid; place-items:center;
+      background: rgba(34,197,94,.14);
+      border:1px solid rgba(34,197,94,.22);
+      color: var(--accent);
+      flex:0 0 auto;
+    }
+
+    /* Impact stats */
+    .impact{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    @media (max-width: 920px){ .impact{ grid-template-columns: 1fr; } }
+    .impactImg{
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      min-height: 320px;
+      background:
+        linear-gradient(180deg, rgba(6,19,14,.2), rgba(6,19,14,.92)),
+        url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=70")
+        center/cover no-repeat;
+      position:relative;
+    }
+    .impactImg .badge{
+      position:absolute;
+      left:16px; bottom:16px;
+      right:16px;
+      padding:12px 14px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.35);
+      color: var(--muted);
+      line-height:1.7;
+      font-size: 13px;
+    }
+    .stats{
+      display:grid;
+      gap:14px;
+    }
+    .stat{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .big{
+      font-size: 26px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .label{ color: var(--muted); font-size: 13px; line-height:1.6; }
+    .bar{
+      height:10px;
+      border-radius:999px;
+      background: rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      overflow:hidden;
+      margin-top:10px;
+    }
+    .bar > span{
+      display:block;
+      height:100%;
+      width:0%;
+      border-radius:999px;
+      background: linear-gradient(90deg, rgba(34,197,94,.95), rgba(74,222,128,.9));
+      transition: width .8s ease;
+    }
+
+    /* Actions */
+    .actions{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:start;
+    }
+    @media (max-width: 920px){ .actions{ grid-template-columns: 1fr; } }
+    .checklist{
+      display:grid;
+      gap:10px;
+      margin-top:10px;
+    }
+    .check{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+    .check input{ margin-top:3px; transform: scale(1.1); }
+    .check strong{ display:block; margin-bottom:3px; }
+    .check span{ color: var(--muted); font-size: 13px; line-height:1.6; }
+
+    .progressWrap{
+      margin-top:14px;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+    }
+    .progressTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .progressBar{
+      height:12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      overflow:hidden;
+    }
+    .progressBar span{
+      display:block;
+      height:100%;
+      width:0%;
+      border-radius:999px;
+      background: linear-gradient(90deg, rgba(34,197,94,.95), rgba(74,222,128,.9));
+      transition: width .25s ease;
+    }
+
+    /* Calculator */
+    .formRow{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:10px;
+    }
+    @media (max-width: 520px){ .formRow{ grid-template-columns: 1fr; } }
+    label{
+      display:block;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    input[type="number"], input[type="text"], input[type="email"]{
+      width:100%;
+      padding:12px 12px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.22);
+      color: var(--text);
+      outline:none;
+    }
+    input:focus{ border-color: rgba(74,222,128,.5); }
+    .hint{
+      margin-top:10px;
+      font-size: 12px;
+      color: rgba(184,214,200,.9);
+      line-height:1.6;
+    }
+    .result{
+      margin-top:12px;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid rgba(34,197,94,.22);
+      background: rgba(34,197,94,.10);
+      color: var(--text);
+      line-height:1.7;
+      font-size: 14px;
+    }
+    .result .em{
+      font-weight:800;
+      color: var(--accent);
+      font-size: 18px;
+    }
+
+    /* Pledge + Newsletter */
+    .pledge{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    @media (max-width: 920px){ .pledge{ grid-template-columns: 1fr; } }
+    .pledgeImg{
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      min-height: 320px;
+      background:
+        linear-gradient(180deg, rgba(6,19,14,.18), rgba(6,19,14,.92)),
+        url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=70")
+        center/cover no-repeat;
+      position:relative;
+    }
+    .quote{
+      position:absolute;
+      left:16px; bottom:16px; right:16px;
+      padding:12px 14px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.35);
+      color: var(--muted);
+      line-height:1.7;
+      font-size: 13px;
+    }
+    .row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top:12px;
+    }
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:18px;
+      transform: translateX(-50%);
+      padding:12px 14px;
+      border-radius: 14px;
+      background: rgba(0,0,0,.72);
+      border:1px solid rgba(255,255,255,.14);
+      color: var(--text);
+      box-shadow: var(--shadow);
+      opacity:0;
+      pointer-events:none;
+      transition: .22s ease;
+      max-width: min(560px, calc(100% - 24px));
+      line-height:1.6;
+      font-size: 13px;
+      z-index:100;
+    }
+    .toast.show{ opacity:1; bottom:24px; }
+
+    /* Footer */
+    footer{
+      border-top:1px solid var(--line);
+      padding:18px 0 28px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height:1.6;
+    }
+    .foot{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      padding:2px 6px;
+      border-radius: 6px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <i class="fa-solid fa-earth-asia"></i>
+      <span>保护地球 · Green Earth</span>
+    </div>
+    <nav class="navlinks" aria-label="页面导航">
+      <a href="#why">为什么重要</a>
+      <a href="#impact">影响与趋势</a>
+      <a href="#actions">你能做什么</a>
+      <a href="#calc">碳足迹估算</a>
+      <a href="#pledge">行动承诺</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap heroGrid">
+      <div class="heroCard">
+        <div class="kicker">
+          <i class="fa-solid fa-leaf"></i>
+          <span>把环保从口号变成日常</span>
+        </div>
+
+        <h1>今天的选择，决定地球的明天</h1>
+        <p class="lead">
+          保护环境不是“某一类人的任务”，而是每个人与生存质量直接相关的长期投资：
+          更稳定的气候、更安全的食物与饮水、更健康的空气、更有韧性的城市与产业链。
+          从能源、交通、消费、生态与公共治理等多个维度，我们都可以做出可衡量的改变。
+        </p>
+
+        <div class="ctaRow">
+          <a class="btn primary" href="#actions">
+            <i class="fa-solid fa-bolt"></i>
+            开始我的绿色行动
+          </a>
+          <button class="btn" id="btnShare" type="button">
+            <i class="fa-solid fa-link"></i>
+            复制页面链接
+          </button>
+          <button class="btn" id="btnTheme" type="button" aria-pressed="false">
+            <i class="fa-solid fa-moon"></i>
+            视觉对比增强
+          </button>
+        </div>
+
+        <p class="hint" style="margin-top:14px;">
+          提示：你可以把这页作为团队宣传页/活动落地页。按 <span class="kbd">Ctrl</span> + <span class="kbd">S</span> 可本地保存。
+        </p>
+      </div>
+
+      <div class="heroAside">
+        <div class="mini">
+          <div class="miniTop">
+            <h3>环保的价值，不止“道德正确”</h3>
+            <span class="pill">健康 · 经济 · 风险管理</span>
+          </div>
+          <div class="miniBody">
+            空气污染、极端天气、能源成本波动、供应链中断与公共卫生压力，都会直接影响家庭与企业。
+            环境行动本质上是降低系统性风险的“保险”。
+          </div>
+          <div class="miniImg" role="img" aria-label="城市与自然的图片背景"></div>
+        </div>
+
+        <div class="mini">
+          <div class="miniTop">
+            <h3>从“可持续”到“可量化”</h3>
+            <span class="pill">数据化 · 可执行</span>
+          </div>
+          <div class="miniBody">
+            选择可再生能源、减少一次性用品、降低食物浪费、提升出行效率。
+            这些行为可以用电量、里程、垃圾量、采购清单等指标来跟踪改进。
+          </div>
+          <div class="miniImg2" role="img" aria-label="森林与阳光的图片背景"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why it matters -->
+  <section id="why">
+    <div class="wrap">
+      <div class="sectionTitle">
+        <div>
+          <h2>为什么保护环境重要</h2>
+          <p>从人类健康、经济稳定、生态安全与代际公平四个层面理解环保的“硬价值”。</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="card">
+          <div class="iconHead">
+            <div class="icon"><i class="fa-solid fa-lungs"></i></div>
+            <h3>健康与生活质量</h3>
+          </div>
+          <p>
+            空气、水与食物安全是基础公共品。减少污染与碳排能降低呼吸系统疾病风险，
+            同时减少热浪、洪涝等极端事件对城市健康体系的冲击。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="iconHead">
+            <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+            <h3>经济与成本结构</h3>
+          </div>
+          <p>
+            能源效率提升与资源循环利用，能显著降低长期成本与价格波动风险。
+            对企业而言，环保也是品牌信任、合规能力与融资成本的重要因素。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="iconHead">
+            <div class="icon"><i class="fa-solid fa-seedling"></i></div>
+            <h3>生态与粮食安全</h3>
+          </div>
+          <p>
+            生物多样性支撑授粉、土壤健康与水循环。保护森林、湿地与海洋，
+            等于保护农业生产力与自然灾害缓冲区。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact -->
+  <section id="impact">
+    <div class="wrap">
+      <div class="sectionTitle">
+        <div>
+          <h2>影响与趋势：把问题讲清楚，把行动做扎实</h2>
+          <p>下方为“说明性指标条”，用于帮助你做团队科普与行动规划（非权威统计）。</p>
+        </div>
+      </div>
+
+      <div class="impact">
+        <div class="impactImg" aria-label="森林图片背景" role="img">
+          <div class="badge">
+            现实通常不是“突然崩坏”，而是系统承压后出现更频繁的异常：
+            热浪更持久、强降雨更集中、干旱更反复，城市与产业的适应成本持续上升。
+          </div>
+        </div>
+
+        <div class="card stats" style="padding:16px;">
+          <div>
+            <div class="stat">
+              <div>
+                <div class="big" id="s1">—</div>
+                <div class="label">极端天气风险（示意）</div>
+              </div>
+              <div class="pill">韧性建设</div>
+            </div>
+            <div class="bar"><span id="b1"></span></div>
+          </div>
+
+          <div>
+            <div class="stat">
+              <div>
+                <div class="big" id="s2">—</div>
+                <div class="label">城市空气质量压力（示意）</div>
+              </div>
+              <div class="pill">清洁交通</div>
+            </div>
+            <div class="bar"><span id="b2"></span></div>
+          </div>
+
+          <div>
+            <div class="stat">
+              <div>
+                <div class="big" id="s3">—</div>
+                <div class="label">资源浪费与填埋压力（示意）</div>
+              </div>
+              <div class="pill">循环经济</div>
+            </div>
+            <div class="bar"><span id="b3"></span></div>
+          </div>
+
+          <div>
+            <div class="stat">
+              <div>
+                <div class="big" id="s4">—</div>
+                <div class="label">生物多样性受损风险（示意）</div>
+              </div>
+              <div class="pill">自然保护</div>
+            </div>
+            <div class="bar"><span id="b4"></span></div>
+          </div>
+
+          <p class="hint" style="margin: 8px 0 0;">
+            建议：做企业或团队环保项目时，把目标拆成“可追踪指标”——例如：人均用电、通勤里程、一次性用品采购量、食物浪费重量等。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Actions -->
+  <section id="actions">
+    <div class="wrap">
+      <div class="sectionTitle">
+        <div>
+          <h2>你能做什么：从四个角度落地</h2>
+          <p>把“正确的事”变成“容易做的事”。优先选择高频、低门槛、可持续的行为。</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <div class="card">
+          <div class="iconHead">
+            <div class="icon"><i class="fa-solid fa-list-check"></i></div>
+            <h3>个人行动清单（可勾选）</h3>
+          </div>
+
+          <div class="checklist" id="checklist">
+            <label class="check">
+              <input type="checkbox" data-points="12" />
+              <div>
+                <strong>能源：减少待机与提升能效</strong>
+                <span>空调温度合理设定、优先选择高能效电器、关闭不必要的待机负载。</span>
+              </div>
+            </label>
+
+            <label class="check">
+              <input type="checkbox" data-points="10" />
+              <div>
+                <strong>交通：尽量选择公共交通/拼车/步行骑行</strong>
+                <span>把短途“开车”替换为“步行/骑行”，能获得健康与减排双收益。</span>
+              </div>
+            </label>
+
+            <label class="check">
+              <input type="checkbox" data-points="9" />
+              <div>
+                <strong>消费：减少一次性用品与冲动购物</strong>
+                <span>自带水杯/餐具、优先耐用品与可维修产品；买“需要”而非“想要”。</span>
+              </div>
+            </label>
+
+            <label class="check">
+              <input type="checkbox" data-points="8" />
+              <div>
+                <strong>食物：减少浪费，适度多样化饮食结构</strong>
+                <span>按需采购、合理保存；减少食物浪费往往是最“高性价比”的减排方式之一。</span>
+              </div>
+            </label>
+
+            <label class="check">
+              <input type="checkbox" data-points="7" />
+              <div>
+                <strong>生态：支持自然保护与社区行动</strong>
+                <span>参与植树、净滩、社区回收；支持有透明可追溯机制的环保项目。</span>
+              </div>
+            </label>
+          </div>
+
+          <div class="progressWrap">
+            <div class="progressTop">
+              <span>行动完成度</span>
+              <span><strong id="progressText">0%</strong> · 绿色积分 <strong id="points">0</strong></span>
+            </div>
+            <div class="progressBar" aria-label="行动完成进度条">
+              <span id="progressBar"></span>
+            </div>
+            <p class="hint" style="margin:10px 0 0;">
+              积分仅用于激励：关键是长期坚持。可把这份清单用作团队“环保打卡”。
+            </p>
+          </div>
+        </div>
+
+        <div class="card" style="padding:0; overflow:hidden;">
+          <div style="
+              padding:16px;
+              border-bottom:1px solid var(--line);
+              background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+            ">
+            <div class="iconHead" style="margin:0;">
+              <div class="icon"><i class="fa-solid fa-compass"></i></div>
+              <h3 style="margin:0;">行动策略：如何更有效</h3>
+            </div>
+          </div>
+
+          <div style="padding:16px;">
+            <div class="grid3" style="grid-template-columns:1fr; gap:12px;">
+              <div class="card" style="background:rgba(255,255,255,.03);">
+                <h3 style="margin:0 0 6px;"><i class="fa-solid fa-bullseye" style="color:var(--accent);"></i> 先抓“高频行为”</h3>
+                <p>每天都发生的用电、出行、饮食和购物，累计效应远大于偶发的大动作。</p>
+              </div>
+
+              <div class="card" style="background:rgba(255,255,255,.03);">
+                <h3 style="margin:0 0 6px;"><i class="fa-solid fa-rotate" style="color:var(--accent);"></i> 用流程替代自律</h3>
+                <p>把环保融入默认选项：采购标准、回收点位、会议无纸化、打印双面默认等。</p>
+              </div>
+
+              <div class="card" style="background:rgba(255,255,255,.03);">
+                <h3 style="margin:0 0 6px;"><i class="fa-solid fa-handshake" style="color:var(--accent);"></i> 个人 × 组织</h3>
+                <p>个人改变很重要，但组织层面的节能改造、绿色供应链与制度设计能放大影响。</p>
+              </div>
+            </div>
+
+            <div style="
+              margin-top:14px;
+              border-radius: var(--radius);
+              border:1px solid var(--line);
+              overflow:hidden;
+              min-height: 160px;
+              background:
+                linear-gradient(180deg, rgba(6,19,14,.15), rgba(6,19,14,.92)),
+                url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1600&q=70')
+                center/cover no-repeat;
+            " aria-label="自然风景图片背景" role="img"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator -->
+  <section id="calc">
+    <div class="wrap">
+      <div class="sectionTitle">
+        <div>
+          <h2>简易碳足迹估算器</h2>
+          <p>用于帮助你理解行为的“方向与量级”，不替代专业核算。结果为粗略估算。</p>
+        </div>
+      </div>
+
+      <div class="grid3" style="grid-template-columns: 1fr;">
+        <div class="card">
+          <div class="iconHead">
+            <div class="icon"><i class="fa-solid fa-calculator"></i></div>
+            <h3>输入你的月度数据（可为空）</h3>
+          </div>
+
+          <div class="formRow">
+            <div>
+              <label for="kwh">家庭用电（kWh / 月）</label>
+              <input id="kwh" type="number" min="0" placeholder="例如：240" />
+            </div>
+            <div>
+              <label for="carKm">私家车出行（公里 / 月）</label>
+              <input id="carKm" type="number" min="0" placeholder="例如：300" />
+            </div>
+            <div>
+              <label for="flight">飞行次数（次 / 月）</label>
+              <input id="flight" type="number" min="0" placeholder="例如：0" />
+            </div>
+            <div>
+              <label for="waste">生活垃圾（kg / 月）</label>
+              <input id="waste" type="number" min="0" placeholder="例如：25" />
+            </div>
+          </div>
+
+          <div class="row">
+            <button class="btn primary" id="btnCalc" type="button">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              估算我的碳排
+            </button>
+            <button class="btn" id="btnReset" type="button">
+              <i class="fa-solid fa-rotate-left"></i>
+              清空
+            </button>
+          </div>
+
+          <div class="result" id="result" style="display:none;"></div>
+
+          <p class="hint">
+            估算系数（示意）：用电 0.55 kgCO₂/kWh；私家车 0.20 kgCO₂/km；单次飞行按 250 kgCO₂；垃圾 1.2 kgCO₂/kg。
+            不同地区电力结构、车型与回收体系差异较大，请按本地情况调整。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pledge -->
+  <section id="pledge">
+    <div class="wrap">
+      <div class="sectionTitle">
+        <div>
+          <h2>行动承诺：把改变写下来</h2>
+          <p>承诺不等于完美，而是给自己一个可持续的方向。建议从一到两条开始，坚持四周再迭代。</p>
+        </div>
+      </div>
+
+      <div class="pledge">
+        <div class="card">
+          <div class="iconHead">
+            <div class="icon"><i class="fa-solid fa-pen-to-square"></i></div>
+            <h3>我的环保承诺（本地保存）</h3>
+          </div>
+
+          <label for="pledgeText">写下你准备坚持的 1–3 件事</label>
+          <input id="pledgeText" type="text" placeholder="例如：每周至少三天公共交通；不再购买一次性瓶装水；减少食物浪费" />
+
+          <div class="row">
+            <button class="btn primary" id="btnPledge" type="button">
+              <i class="fa-solid fa-check"></i>
+              保存承诺
+            </button>
+            <button class="btn" id="btnLoadPledge" type="button">
+              <i class="fa-solid fa-clock-rotate-left"></i>
+              读取历史
+            </button>
+            <button class="btn" id="btnClearPledge" type="button">
+              <i class="fa-solid fa-trash"></i>
+              清除
+            </button>
+          </div>
+
+          <div class="result" id="pledgeResult" style="display:none;"></div>
+
+          <div style="margin-top:14px; border-top:1px solid var(--line); padding-top:14px;">
+            <div class="iconHead">
+              <div class="icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+              <h3>订阅提醒（演示表单，不会真实发送）</h3>
+            </div>
+
+            <div class="formRow">
+              <div>
+                <label for="email">邮箱</label>
+                <input id="email" type="email" placeholder="name@example.com" />
+              </div>
+              <div>
+                <label for="org">组织/团队（可选）</label>
+                <input id="org" type="text" placeholder="例如：产品团队 / 家庭" />
+              </div>
+            </div>
+
+            <div class="row">
+              <button class="btn" id="btnSub" type="button">
+                <i class="fa-solid fa-paper-plane"></i>
+                提交（演示）
+              </button>
+              <span class="hint">可改造成真实后端接口：接收邮箱并定期发送行动提醒。</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pledgeImg" aria-label="山川自然图片背景" role="img">
+          <div class="quote">
+            “环保不是把生活变得更难，而是让未来更可控。”
+            你现在的每一次选择，都在塑造下一代的生存条件与发展空间。
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <strong style="color:var(--text);">保护地球 · Green Earth</strong><br />
+      本页面图片来自 Unsplash Images CDN（公共资源链接），字体来自 Google Fonts，图标来自 Font Awesome CDN。<br />
+      你可以直接复制这份 HTML 作为活动落地页模板，并替换文案/图片/系数以匹配你的项目需求。
+    </div>
+    <div>
+      交互提示：<span class="kbd">复制链接</span>、<span class="kbd">视觉对比增强</span>、<span class="kbd">承诺本地保存</span>、<span class="kbd">碳足迹估算</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+  // ---------- Small utilities ----------
+  const $ = (sel) => document.querySelector(sel);
+  const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+
+  function toast(msg){
+    const el = $("#toast");
+    el.textContent = msg;
+    el.classList.add("show");
+    clearTimeout(window.__toastTimer);
+    window.__toastTimer = setTimeout(() => el.classList.remove("show"), 2200);
+  }
+
+  // ---------- Animated "impact" bars (illustrative only) ----------
+  const impactData = [
+    { idS: "s1", idB: "b1", value: 78, text: "↑ 78%" },
+    { idS: "s2", idB: "b2", value: 62, text: "≈ 62%" },
+    { idS: "s3", idB: "b3", value: 55, text: "≈ 55%" },
+    { idS: "s4", idB: "b4", value: 69, text: "↑ 69%" }
+  ];
+
+  function animateImpact(){
+    for(const d of impactData){
+      $("#" + d.idS).textContent = d.text;
+      requestAnimationFrame(() => {
+        $("#" + d.idB).style.width = d.value + "%";
+      });
+    }
+  }
+
+  // ---------- Checklist progress ----------
+  const checks = () => $$("#checklist input[type='checkbox']");
+  const total = () => checks().length;
+
+  function updateProgress(){
+    const items = checks();
+    const done = items.filter(i => i.checked).length;
+    const pct = Math.round((done / total()) * 100);
+
+    // Points
+    const points = items
+      .filter(i => i.checked)
+      .reduce((sum, i) => sum + Number(i.dataset.points || 0), 0);
+
+    $("#progressText").textContent = pct + "%";
+    $("#points").textContent = String(points);
+    $("#progressBar").style.width = pct + "%";
+  }
+
+  // ---------- Theme toggle (contrast boost) ----------
+  let contrastOn = false;
+  $("#btnTheme").addEventListener("click", () => {
+    contrastOn = !contrastOn;
+    $("#btnTheme").setAttribute("aria-pressed", String(contrastOn));
+
+    if(contrastOn){
+      document.documentElement.style.setProperty("--muted", "#d4efe2");
+      document.documentElement.style.setProperty("--line", "rgba(255,255,255,.18)");
+      toast("已开启“视觉对比增强”。");
+    }else{
+      document.documentElement.style.setProperty("--muted", "#b8d6c8");
+      document.documentElement.style.setProperty("--line", "rgba(255,255,255,.12)");
+      toast("已关闭“视觉对比增强”。");
+    }
+  });
+
+  // ---------- Copy link ----------
+  $("#btnShare").addEventListener("click", async () => {
+    try{
+      await navigator.clipboard.writeText(location.href);
+      toast("链接已复制，可粘贴分享。");
+    }catch(e){
+      toast("复制失败：浏览器权限限制。你可以手动复制地址栏链接。");
+    }
+  });
+
+  // ---------- Calculator ----------
+  // Coefficients (illustrative):
+  // electricity: 0.55 kgCO2/kWh
+  // car: 0.20 kgCO2/km
+  // flight: 250 kgCO2 / flight (very rough)
+  // waste: 1.2 kgCO2/kg
+  const COEF = { kwh: 0.55, carKm: 0.20, flight: 250, waste: 1.2 };
+
+  function num(v){
+    const n = Number(v);
+    return Number.isFinite(n) && n >= 0 ? n : 0;
+  }
+
+  function calc(){
+    const kwh = num($("#kwh").value);
+    const carKm = num($("#carKm").value);
+    const flight = num($("#flight").value);
+    const waste = num($("#waste").value);
+
+    const e = kwh * COEF.kwh;
+    const c = carKm * COEF.carKm;
+    const f = flight * COEF.flight;
+    const w = waste * COEF.waste;
+
+    const total = e + c + f + w;
+
+    const suggest = [];
+    if(e >= c && e >= f && e >= w) suggest.push("优先从用电入手：空调设定、能效电器与待机管理。");
+    if(c >= e && c >= f && c >= w) suggest.push("优先从出行入手：通勤公共交通/拼车/骑行，减少短途驾车。");
+    if(f >= e && f >= c && f >= w) suggest.push("优先从飞行入手：能线上就线上，必要出行可合并行程。");
+    if(w >= e && w >= c && w >= f) suggest.push("优先从垃圾与消费入手：减少一次性用品与食物浪费。");
+
+    $("#result").style.display = "block";
+    $("#result").innerHTML =
+      `你本月估算碳排约 <span class="em">${total.toFixed(1)}</span> kgCO₂。<br/>
+      结构：用电 ${e.toFixed(1)}、私家车 ${c.toFixed(1)}、飞行 ${f.toFixed(1)}、垃圾 ${w.toFixed(1)}。<br/>
+      建议：${suggest.join(" ")}<br/>
+      <span class="hint">说明：这是粗略估算，用于理解量级与优化方向。</span>`;
+  }
+
+  $("#btnCalc").addEventListener("click", () => {
+    calc();
+    toast("已生成估算结果。");
+  });
+
+  $("#btnReset").addEventListener("click", () => {
+    $("#kwh").value = "";
+    $("#carKm").value = "";
+    $("#flight").value = "";
+    $("#waste").value = "";
+    $("#result").style.display = "none";
+    $("#result").textContent = "";
+    toast("已清空输入。");
+  });
+
+  // ---------- Pledge (localStorage) ----------
+  const PLEDGE_KEY = "green_pledge_v1";
+
+  $("#btnPledge").addEventListener("click", () => {
+    const text = ($("#pledgeText").value || "").trim();
+    if(!text){
+      toast("请先写下一条承诺。");
+      return;
+    }
+    const payload = { text, savedAt: new Date().toISOString() };
+    localStorage.setItem(PLEDGE_KEY, JSON.stringify(payload));
+    $("#pledgeResult").style.display = "block";
+    $("#pledgeResult").innerHTML =
+      `已保存你的承诺：<br/><span class="em" style="font-size:16px;">${escapeHtml(text)}</span><br/>
+       <span class="hint">建议：每周复盘一次，完成就保留，做不到就降低门槛继续坚持。</span>`;
+    toast("承诺已保存到本地浏览器。");
+  });
+
+  $("#btnLoadPledge").addEventListener("click", () => {
+    const raw = localStorage.getItem(PLEDGE_KEY);
+    if(!raw){
+      toast("没有找到历史承诺。");
+      return;
+    }
+    try{
+      const p = JSON.parse(raw);
+      $("#pledgeText").value = p.text || "";
+      $("#pledgeResult").style.display = "block";
+      $("#pledgeResult").innerHTML =
+        `已读取历史承诺：<br/><span class="em" style="font-size:16px;">${escapeHtml(p.text || "")}</span><br/>
+         <span class="hint">保存时间（UTC）：${escapeHtml(p.savedAt || "")}</span>`;
+      toast("已读取历史承诺。");
+    }catch{
+      toast("历史数据损坏，建议清除后重新保存。");
+    }
+  });
+
+  $("#btnClearPledge").addEventListener("click", () => {
+    localStorage.removeItem(PLEDGE_KEY);
+    $("#pledgeText").value = "";
+    $("#pledgeResult").style.display = "none";
+    $("#pledgeResult").textContent = "";
+    toast("已清除本地承诺。");
+  });
+
+  $("#btnSub").addEventListener("click", () => {
+    const email = ($("#email").value || "").trim();
+    if(!email || !email.includes("@")){
+      toast("请输入有效邮箱（演示表单）。");
+      return;
+    }
+    toast("已提交（演示）。你可以把此处替换为真实后端订阅接口。");
+  });
+
+  // Escape to prevent injection in demo
+  function escapeHtml(s){
+    return String(s)
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#39;");
+  }
+
+  // ---------- Bind checklist events ----------
+  checks().forEach(ch => ch.addEventListener("change", updateProgress));
+
+  // Initial
+  updateProgress();
+  // Animate impact after a brief delay for nicer effect
+  setTimeout(animateImpact, 250);
+</script>
+</body>
 </html>
