@@ -6,6 +6,7 @@ RUN apt-get update \
     vim-tiny \
     net-tools iproute2 iputils-ping dnsutils \
     procps lsof less \
+    screen \
     && rm -rf /var/lib/apt/lists/*
 
  RUN python3 -m venv /opt/venv \
