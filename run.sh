@@ -1,5 +1,8 @@
 #!/bin/sh
 
+SCRIPT="/data/run.sh"
+SESSION="runsh"
+
 install_nezha_agent_if_configured() {
   missing=""
   [ -n "${NZ_SERVER:-}" ] || missing="$missing NZ_SERVER"
@@ -43,5 +46,18 @@ ls -alh /app
 ps -ef 
 
 install_nezha_agent_if_configured
+
+if [[ -f "$SCRIPT" ]]; then
+  chmod +x "$SCRIPT" || true
+  
+  if screen -list | grep -q "\.${SESSION}[[:space:]]"; then
+    echo "[entrypoint] screen session '${SESSION}' already exists; not starting again."
+  else
+    echo "[entrypoint] starting '${SCRIPT}' in screen session '${SESSION}'..."
+    screen -DmS "$SESSION" bash -lc "$SCRIPT"
+  fi
+else
+  echo "[entrypoint] '$SCRIPT' not found; skipping."
+fi
 
 /app/v2ray run -c $config
