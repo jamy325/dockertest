@@ -15,7 +15,7 @@ RUN apt-get update \
 
 WORKDIR /v2ray
 
-RUN curl -fsSL "https://github.com/v2fly/v2ray-core/releases/download/v5.43.0/v2ray-linux-64.zip" -o /tmp/app.zip
+RUN curl -fsSL "https://github.com/v2fly/v2ray-core/releases/download/v5.52.0/v2ray-linux-64.zip" -o /tmp/app.zip
 
 COPY run.sh /app/run.sh
 

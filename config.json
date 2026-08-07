@@ -1,57 +1,36 @@
 {
-    "log": {
-        "loglevel": "debug"
-    },
-    "inbounds": [
-        {
-            "port": 4433,
-            "listen": "0.0.0.0",
-            "protocol": "vless",
-            "settings": {
-                "clients": [
-                    {
-                        "id": "0affffe4-3f7e-423f-9192-b75a17b7ec64",
-                        "level": 0,
-                        "email": "love@v2fly.org"
-                    }
-                ],
-                "decryption": "none"
-            },
-            "streamSettings": {
-                "network": "ws",
-                "security": "none",
-                "wsSettings": {
-                    "path": "/data"
-                }
-            }
-        },
-         {
-            "port": 4434,
-            "listen": "0.0.0.0",
-            "protocol": "vless",
-            "settings": {
-                "clients": [
-                    {
-                        "id": "0affffe4-3f7e-423f-9192-b75a17b7ec64",
-                        "level": 0,
-                        "email": "love@v2fly.org"
-                    }
-                ],
-                "decryption": "none"
-            },
-            "streamSettings": {
-                "network": "xhttp",
-                "security": "none",
-                "xhttpSettings": {
-                    "mode": "h2",
-                    "path": "/xdata"
-                }
-            }
+  "log": {
+    "loglevel": "debug"
+  },
+
+  "inbounds": [
+    {
+      "port": 4433,
+      "listen": "0.0.0.0",
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "0affffe4-3f7e-423f-9192-b75a17b7ec64",
+            "level": 0,
+            "email": "love@v2fly.org"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/data"
         }
-    ],
-    "outbounds": [
-        {
-            "protocol": "freedom"
-        }
-    ]
+      }
+    }
+  ],
+
+  "outbounds": [
+    {
+      "protocol": "freedom"
+    }
+  ]
 }
